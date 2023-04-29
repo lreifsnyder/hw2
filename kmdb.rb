@@ -97,11 +97,13 @@ puts "studio: #{Studio.all.count}" # studio: 0
 
 #Movies
 
+# warner = Studio.find_by({"name" = "Warner Bros."})
+
 movie1 = Movie.new
 movie1["title"] = "Batman Begins"
 movie1["year_released"] = 2005
 movie1["rated"] = "PG-13"
-movie1["studio_id"] = 1
+movie1["studio_id"] = 1 #warner["id"]
 movie1.save
 
 movie2 = Movie.new
@@ -169,6 +171,7 @@ actor11.save
 puts "actors: #{Actor.all.count}"
 
 #Roles
+
 
 role1 = Role.new
 role1["movie_id"] = 1
@@ -268,7 +271,12 @@ puts "======"
 puts ""
 
 # Query the movies data and loop through the results to display the movies output.
-# TODO!
+
+for titles in movies
+    puts Movie["title"] Movie["year_released"] Movie["rated"] Studio["name"]
+
+end 
+
 
 # Prints a header for the cast output
 puts ""
