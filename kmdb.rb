@@ -293,15 +293,15 @@ puts ""
 
 # Query the movies data and loop through the results to display the movies output.
 
-movie_studio = Movie.where({"studio_id" => warner["id"]})
+all_movies = Movie.where({"studio_id" => warner["id"]})
 
-for movie in movie_studio
+for movie in all_movies
     title = movie["title"]
     release_year = movie["year_released"]
     rating = movie["rated"]
     studio = Studio.find_by({"id" => movie["studio_id"]})
     puts "#{title} #{release_year} #{rating} #{studio["name"]}"
-    
+
 end
 
 
@@ -312,4 +312,11 @@ puts "========"
 puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
-# TODO!
+
+all_roles = Role.all
+for role in all_roles
+    actor = Actor.find_by({"id" => role["actor_id"]}) 
+    title = Movie.find_by({"id" => role["movie_id"]})
+    character = role["character_name"]
+    puts "#{title["title"]} #{actor["name"]} #{character}"
+end
